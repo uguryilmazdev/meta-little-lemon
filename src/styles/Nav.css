@@ -1,0 +1,27 @@
+nav {
+    display: grid;
+    padding: var(--padding-inner) 0;
+    grid-template-columns: 1fr;
+}
+
+/* Little Lemon Logo */
+.logo {
+    height: 15vmin;
+    margin: var(--margin-outer) auto;
+}
+
+/* Navbar Links */
+nav > ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+/* responsive design */
+/* xl screen */
+@media (width >= 1200px) {
+    nav {
+        grid-template-columns: 1fr 2fr;
+    }
+}

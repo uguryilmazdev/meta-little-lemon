@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* COLORS */
+    /* primary colors */
+    --green: rgb(73,94,87);
+    --yellow: rgb(244,206,20);
+    /* secondary colors*/
+    --orange: rgb(238,153,114);
+    --beige: rgb(251,218,187);
+    /* highlight colors */
+    --white: rgb(237,239,238);
+    --black: rgb(51,51,51);
+
+    /* FONT PROPERTIES */
+    --headline-text-family: 'Montserrat', sans-serif;
+    --regular-text-family: 'Karla', sans-serif;
+    --headline-text-weight: 500;
+    --regular-text-weight: 400;
+    --bold-text-weight: 600;
+
+    /* Padding*/
+    --padding-outer: 3vmin;
+    --padding-inner: 2vmin;
+    /* Margin */
+    --margin-outer: 2rem;
+    --margin-inner: 1rem;
+    /* Border radius */
+    --border-radius-small: 10px;
+
+    font-size: 1vmax;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0 var(--padding-outer);
+    max-width: 100vw;
+    background-color: var(--white);
+    font-family: var(--regular-text-family); /* titles will be replaced with headline-text-family */
+    font-weight: var(--regular-text-weight);
+}
+
+/* FONT SIZE */
+/* sm screen */
+@media (width >= 576px) {
+    body {
+        font-size: 1.7vmax;
+    }
+}
+
+/* md screen */
+@media (width >= 768px) {
+    body {
+        font-size: 1.6vmax;
+    }
+}
+
+/* lg screen */
+@media (width >= 992px) {
+    body {
+        font-size: 1.3vmax;
+    }
+}
+
+/* xl screen */
+@media (width >= 1200px) {
+    body {
+        font-size: 1.2vmax;
+    }
+}
+
+/* xxl screen */
+@media (width >= 1499px) {
+    body {
+        font-size: 1.1vmax;
+    }
+}
+

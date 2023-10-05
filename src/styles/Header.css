@@ -1,0 +1,35 @@
+header {
+    display: flex;
+    align-items: center;
+    padding: var(--padding-inner);
+    background-color: var(--green);
+    height: 50vmin;
+}
+
+#header-content {
+    padding: var(--padding-inner);
+    color: var(--white);
+    text-align: justify;
+}
+
+#header-content > * {
+    margin: var(--margin-inner);
+}
+
+#header-content > h1, h3 {
+    color: var(--yellow);
+}
+
+#header-content > h1 {
+    font-size: 4rem;
+}
+
+#header-content > h3 {
+    font-size: 2rem;
+}
+
+#header-image {
+    max-width: 40vw;
+    height: 50vmin;
+    object-fit: cover;
+}

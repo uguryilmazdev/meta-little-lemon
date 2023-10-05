@@ -1,18 +1,19 @@
 import littleLemonLogo from '../assets/Logo.svg'
+import '../styles/Nav.css'
 
 function Nav() {
     return (
-        <>
-            <img src={littleLemonLogo} alt='Little Lemon Logo'/>
+        <nav>
+            <img src={littleLemonLogo} alt='Little Lemon Logo' className='logo'/>
             <ul>
-                <li><a href='#'>Home</a></li>
-                <li><a href='#'>About</a></li>
-                <li><a href='#'>Menu</a></li>
-                <li><a href='#'>Reservations</a></li>
-                <li><a href='#'>Order Online</a></li>
-                <li><a href='#'>Login</a></li>
+                <li><a href='#' className='link'>Home</a></li>
+                <li><a href='#' className='link'>About</a></li>
+                <li><a href='#' className='link'>Menu</a></li>
+                <li><a href='#' className='link'>Reservations</a></li>
+                <li><a href='#' className='link'>Order Online</a></li>
+                <li><a href='#' className='link'>Login</a></li>
             </ul>
-        </>
+        </nav>
     )
 }
 
