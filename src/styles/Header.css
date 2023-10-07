@@ -13,7 +13,7 @@ header {
 }
 
 #header-content > * {
-    margin: var(--margin-inner);
+    margin: var(--margin-outer);
 }
 
 #header-content > h1, h3 {

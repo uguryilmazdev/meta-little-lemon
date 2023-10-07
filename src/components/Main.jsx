@@ -2,13 +2,14 @@ import '../styles/Main.css'
 import greekSaladImage from '../assets/greek_salad.jpg'
 import bruchettaImage from '../assets/bruchetta.svg'
 import lemonDessertImage from '../assets/lemon_dessert.jpg'
+import { Link } from 'react-router-dom'
 
 export default function Main() {
     return (
         <main>
             <section id='specials-header'>
                 <h2>Specials</h2>
-                <button className='button-green'>Online Menu</button>
+                <Link to="menu" className="link-in-button-green">Online Menu</Link>
             </section>
             <section id='specials-container'>
                 <article className='card-container'>

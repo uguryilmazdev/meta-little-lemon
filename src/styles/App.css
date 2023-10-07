@@ -4,7 +4,7 @@
     font-weight: var(--headline-text-weight);
 }
 
-/* Buttons and links */
+/* Buttons */
 .button-yellow {
     font-size: 1rem;
     font-weight: 600;
@@ -35,6 +35,7 @@
     transform: scale(1);
 }
 
+/* Links */
 .link {
     text-decoration: none;
     color: var(--black);
@@ -45,4 +46,29 @@
 .link:hover {
     color: var(--yellow);
 }
+
+.link-in-button-yellow {
+    text-decoration: none;
+    color: var(--green);
+    font-size: 1rem;
+    font-weight: var(--bold-text-weight);
+    border-radius: var(--border-radius-small);
+    padding: .75rem;
+    background-color: var(--yellow);
+}
+
+.link-in-button-green {
+    text-decoration: none;
+    color: var(--yellow);
+    font-size: 1rem;
+    font-weight: var(--bold-text-weight);
+    border-radius: var(--border-radius-small);
+    padding: .75rem;
+    background-color: var(--green);
+}
+
+.link-in-button-yellow:hover, .link-in-button-green:hover {
+    color: var(--black);
+}
+
 
