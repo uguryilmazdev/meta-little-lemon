@@ -7,6 +7,7 @@ import Menu from './pages/Menu.jsx'
 import Reservation from './pages/Reservation.jsx'
 import Order from './pages/Order.jsx'
 import Login from './pages/Login.jsx';
+import ValidLogin from './pages/ValidLogin.jsx';
 import './styles/index.css'
 
 const router = createBrowserRouter([
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />
+    element: <Login />,
+  },
+  {
+    path: "/login/valid",
+    element: <ValidLogin />,
   }
 ]);
 

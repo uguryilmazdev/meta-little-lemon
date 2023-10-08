@@ -1,0 +1,23 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: var(--margin-outer) 0;
+    padding: var(--padding-outer) 0;
+    background-color: var(--yellow);
+    flex-grow: 2;
+}
+
+main > * {
+    margin: var(--margin-outer);
+    text-align: center;
+}
+
+main > h1 {
+    color: var(--black);
+}
+
+main > h2 {
+    color: var(--green);
+}

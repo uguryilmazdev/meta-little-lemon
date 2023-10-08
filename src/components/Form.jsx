@@ -9,6 +9,7 @@ import {
     validatePhone
 } from "../utils";
 import '../styles/Form.css'
+import { useNavigate } from "react-router-dom";
 
 export default function Form() {
     const [firstName, setFirstName] = useState({
@@ -31,6 +32,8 @@ export default function Form() {
         value: "",
         isTouched: false,
     });
+
+    const navigate = useNavigate();
 
     const getIsFormValid = () => {
         return (
@@ -66,8 +69,9 @@ export default function Form() {
     }
 
     const handleSubmit = (e) => {
-        e.preveventDefault();
+        e.preventDefault();
         clearForm();
+        navigate("/login/valid");
     }
 
     return (
