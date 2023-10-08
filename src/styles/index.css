@@ -14,6 +14,8 @@
     /* highlight colors */
     --white: rgb(237,239,238);
     --black: rgb(51,51,51);
+    /* error color */
+    --red: rgb(226, 110, 110);
 
     /* FONT PROPERTIES */
     --headline-text-family: 'Montserrat', sans-serif;

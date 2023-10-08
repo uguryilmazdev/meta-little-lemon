@@ -8,6 +8,7 @@ import {
     validateEmail,
     validatePhone
 } from "../utils";
+import '../styles/Form.css'
 
 export default function Form() {
     const [firstName, setFirstName] = useState({
@@ -82,7 +83,7 @@ export default function Form() {
                     onBlur={() => setFirstName({...firstName, isTouched: true})}
                     placeholder="First name"
                     />
-                    {firstName.isTouched && firstName.value.length < 3 ? (<FirstNameErrorMessage />) : null}
+                    {firstName.isTouched && firstName.value.length < 3 ? (<FirstNameErrorMessage isError/>) : (<FirstNameErrorMessage />)}
                 </div>
                 <div className="form-field">
                     <label>Last Name <sup>*</sup></label>
@@ -93,7 +94,7 @@ export default function Form() {
                     onBlur={() => setLastName({...lastName, isTouched: true})}
                     placeholder="Last name"
                     />
-                    {lastName.isTouched && lastName.value.length < 2 ? (<LastNameErrorMessage />) : null}
+                    {lastName.isTouched && lastName.value.length < 2 ? (<LastNameErrorMessage isError/>) : (<LastNameErrorMessage />)}
                 </div>
                 <div className="form-field">
                     <label>Email Address <sup>*</sup></label>
@@ -104,18 +105,19 @@ export default function Form() {
                     onBlur={() => setEmail({...email, isTouched: true})}
                     placeholder="Email address"
                     />
-                    {email.isTouched && !validateEmail(email.value) ? (<EmailErrorMessage />) : null}
+                    {email.isTouched && !validateEmail(email.value) ? (<EmailErrorMessage isError/>) : (<EmailErrorMessage />)}
                 </div>
                 <div className="form-field">
                     <label>Phone Number <sup>*</sup></label>
                     <input
                     type="tel"
+                    maxLength="10"
                     value={phone.value}
                     onChange={(e) => setPhone({...phone, value: e.target.value})}
                     onBlur={() => setPhone({...phone, isTouched: true})}
                     placeholder="Phone Number"
                     />
-                    {phone.isTouched && phone.value.length != 10 ? (<PhoneErrorMessage />) : null}
+                    {phone.isTouched && phone.value.length != 10 ? (<PhoneErrorMessage isError/>) : (<PhoneErrorMessage />)}
                 </div>
                 <div className="form-field">
                     <label>Password <sup>*</sup></label>
@@ -126,9 +128,9 @@ export default function Form() {
                     onBlur={() => setPassword({...password, isTouched: true})}
                     placeholder="Password"
                     />
-                    {password.isTouched && password.value.length < 8 ? (<PasswordErrorMessage />) : null}
+                    {password.isTouched && password.value.length < 8 ? (<PasswordErrorMessage isError/>) : (<PasswordErrorMessage />)}
                 </div>
-                <button type="submit" disabled={!getIsFormValid()}>
+                <button type="submit" id="form-submit" disabled={!getIsFormValid()}>
                     Create Account
                 </button>
             </fieldset>
