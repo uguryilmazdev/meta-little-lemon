@@ -31,13 +31,17 @@ fieldset > h2 {
     margin-bottom: var(--margin-inner);
 }
 
-.form-field > input {
+.form-field > input, select {
     border: 2px solid white;
     height: 2rem;
     padding: 0.3rem;
 }
 
-.form-field > input:focus {
+.form-field > select {
+    height: 3rem;
+}
+
+.form-field > input:focus, select:focus {
     outline: none;
     border: 2px solid var(--yellow);
 }
@@ -51,7 +55,7 @@ fieldset > h2 {
     visibility: visible;
 }
 
-#form-submit {
+.form-submit {
     background-color: var(--yellow);
     color: var(--green);
     border: none;
@@ -60,6 +64,6 @@ fieldset > h2 {
     margin: var(--margin-inner);
 }
 
-#form-submit:disabled {
+.form-submit:disabled {
     background-color: grey;
 }

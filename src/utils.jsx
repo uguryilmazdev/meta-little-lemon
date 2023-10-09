@@ -1,6 +1,7 @@
 import PropTypes from "prop-types"
 
 // Error Messages
+// Login Form Error Messages
 const FirstNameErrorMessage = ({ isError }) => {
         FirstNameErrorMessage.propTypes = {
             isError: PropTypes.boolean,
@@ -81,6 +82,29 @@ const PhoneErrorMessage = ({ isError }) => {
     }
 }
 
+// Reservation Form Error messages
+
+const DateErrorMessage = ({ isError }) => {
+    DateErrorMessage.propTypes = {
+        isError: PropTypes.boolean,
+    }
+
+    if (isError) {
+        return (
+            <p className="field-error visible">Please select a date</p>
+        )
+    } else {
+        return (
+            <p className="field-error">Please select a date</p>
+        )
+    }
+}
+
+const GuestErrorMessage = () => {
+    return (
+        <p className="field-error visible">Please call us to make a reservation for more than 10 people.</p>
+    )
+}
 // Validation Functions
 const validateEmail = (email) => {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -102,12 +126,22 @@ const validatePhone = (phone) => {
     }
 }
 
+// Placeholder area
+const PlaceholderArea = () => {
+    return (
+        <p className="field-error">This is invisible placeholder area.</p>
+    )
+}
+
 export {
     FirstNameErrorMessage,
     LastNameErrorMessage,
     EmailErrorMessage,
     PhoneErrorMessage,
     PasswordErrorMessage,
+    DateErrorMessage,
+    GuestErrorMessage,
     validateEmail,
-    validatePhone
+    validatePhone,
+    PlaceholderArea
 }

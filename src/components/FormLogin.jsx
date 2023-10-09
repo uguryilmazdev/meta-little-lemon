@@ -12,7 +12,7 @@ import '../styles/Form.css'
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-export default function Form() {
+export default function FormLogin() {
     const [firstName, setFirstName] = useState({
         value: "",
         isTouched: false,
@@ -138,7 +138,7 @@ export default function Form() {
                     />
                     {password.isTouched && password.value.length < 8 ? (<PasswordErrorMessage isError/>) : (<PasswordErrorMessage />)}
                 </div>
-                <button type="submit" id="form-submit" disabled={!getIsFormValid()}>
+                <button type="submit" className="form-submit" disabled={!getIsFormValid()}>
                     Create Account
                 </button>
             </fieldset>
