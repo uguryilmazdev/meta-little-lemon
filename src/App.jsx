@@ -4,16 +4,14 @@ import Nav from './components/Nav'
 import Main from './components/Main'
 import Footer from './components/Footer'
 
-function App() {
-
+export default function App() {
   return (
     <>
-      <Nav />
-      <Header />
-      <Main />
-      <Footer />
+        <Nav />
+        <Header />
+        <Main />
+        <Footer />
     </>
   )
 }
 
-export default App;

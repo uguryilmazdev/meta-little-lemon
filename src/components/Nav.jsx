@@ -1,8 +1,14 @@
 import littleLemonLogo from '../assets/Logo.svg'
 import { Link } from "react-router-dom";
+import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from "react-router-dom";
 import '../styles/Nav.css'
 
 function Nav() {
+
+    const {isLoggedIn, logout} = useAuth();
+    const navigate = useNavigate();
+
     return (
         <nav>
             <img src={littleLemonLogo} alt='Little Lemon Logo' className='logo'/>
@@ -12,7 +18,11 @@ function Nav() {
                 <Link to="menu" className='link'>Menu</Link>
                 <Link to="reservation" className='link'>Reservation</Link>
                 <Link to="/order" className='link'>Order Online</Link>
+                {isLoggedIn ?
+                <button className='button-green' onClick={() => {logout(), navigate("/")}}>Logout</button>
+                :
                 <Link to="/login" className='link'>Login</Link>
+                }
             </ul>
         </nav>
     )

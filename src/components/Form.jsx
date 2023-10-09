@@ -10,6 +10,7 @@ import {
 } from "../utils";
 import '../styles/Form.css'
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Form() {
     const [firstName, setFirstName] = useState({
@@ -34,6 +35,8 @@ export default function Form() {
     });
 
     const navigate = useNavigate();
+
+    const { login } = useAuth();
 
     const getIsFormValid = () => {
         return (
@@ -70,6 +73,7 @@ export default function Form() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        login();
         clearForm();
         navigate("/login/valid");
     }
