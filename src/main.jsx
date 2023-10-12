@@ -42,7 +42,7 @@ const router = createBrowserRouter([
     element: <ValidLogin />,
   },
   {
-    path: "/reservatipn/valid",
+    path: "/reservation/valid",
     element: <ValidReservation />
   }
 ]);
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <RouterProvider router={router}></RouterProvider>
     </AuthProvider>
   </React.StrictMode>,
 )

@@ -1,13 +1,5 @@
 import { useState } from "react";
-import {
-    FirstNameErrorMessage,
-    LastNameErrorMessage,
-    EmailErrorMessage,
-    PhoneErrorMessage,
-    PasswordErrorMessage,
-    validateEmail,
-    validatePhone
-} from "../utils";
+import { FirstNameErrorMessage, LastNameErrorMessage, EmailErrorMessage, PhoneErrorMessage, PasswordErrorMessage, validateEmail, validatePhone } from "../utils";
 import '../styles/Form.css'
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
@@ -33,10 +25,6 @@ export default function FormLogin() {
         value: "",
         isTouched: false,
     });
-
-    const navigate = useNavigate();
-
-    const { login } = useAuth();
 
     const getIsFormValid = () => {
         return (
@@ -73,8 +61,10 @@ export default function FormLogin() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const { login } = useAuth();
         login();
         clearForm();
+        const navigate = useNavigate();
         navigate("/login/valid");
     }
 
@@ -83,10 +73,12 @@ export default function FormLogin() {
             <fieldset>
                 <h2>Sign up</h2>
                 <div className="form-field">
-                    <label>First Name <sup>*</sup></label>
+                    <label htmlFor="firstName">First Name <sup>*</sup></label>
                     <input
                     type="text"
                     value={firstName.value}
+                    name="firstName"
+                    aria-label="firstName"
                     onChange={(e) => setFirstName({...firstName, value: e.target.value})}
                     onBlur={() => setFirstName({...firstName, isTouched: true})}
                     placeholder="First name"
@@ -94,10 +86,11 @@ export default function FormLogin() {
                     {firstName.isTouched && firstName.value.length < 3 ? (<FirstNameErrorMessage isError/>) : (<FirstNameErrorMessage />)}
                 </div>
                 <div className="form-field">
-                    <label>Last Name <sup>*</sup></label>
+                    <label htmlFor="lastName">Last Name <sup>*</sup></label>
                     <input
                     type="text"
                     value={lastName.value}
+                    aria-label="lastName"
                     onChange={(e) => setLastName({...lastName, value: e.target.value})}
                     onBlur={() => setLastName({...lastName, isTouched: true})}
                     placeholder="Last name"
@@ -105,10 +98,11 @@ export default function FormLogin() {
                     {lastName.isTouched && lastName.value.length < 2 ? (<LastNameErrorMessage isError/>) : (<LastNameErrorMessage />)}
                 </div>
                 <div className="form-field">
-                    <label>Email Address <sup>*</sup></label>
+                    <label htmlFor="email">Email Address <sup>*</sup></label>
                     <input
                     type="email"
                     value={email.value}
+                    aria-label="email"
                     onChange={(e) => setEmail({...email, value: e.target.value})}
                     onBlur={() => setEmail({...email, isTouched: true})}
                     placeholder="Email address"
@@ -116,10 +110,11 @@ export default function FormLogin() {
                     {email.isTouched && !validateEmail(email.value) ? (<EmailErrorMessage isError/>) : (<EmailErrorMessage />)}
                 </div>
                 <div className="form-field">
-                    <label>Phone Number <sup>*</sup></label>
+                    <label htmlFor="phoneNumber">Phone Number <sup>*</sup></label>
                     <input
                     type="tel"
                     maxLength="10"
+                    aria-label="phoneNumber"
                     value={phone.value}
                     onChange={(e) => setPhone({...phone, value: e.target.value})}
                     onBlur={() => setPhone({...phone, isTouched: true})}
@@ -128,10 +123,11 @@ export default function FormLogin() {
                     {phone.isTouched && phone.value.length != 10 ? (<PhoneErrorMessage isError/>) : (<PhoneErrorMessage />)}
                 </div>
                 <div className="form-field">
-                    <label>Password <sup>*</sup></label>
+                    <label htmlFor="password">Password <sup>*</sup></label>
                     <input
                     type="password"
                     value={password.value}
+                    aria-label="password"
                     onChange={(e) => setPassword({...password, value: e.target.value})}
                     onBlur={() => setPassword({...password, isTouched: true})}
                     placeholder="Password"
