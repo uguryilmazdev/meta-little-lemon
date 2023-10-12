@@ -4,6 +4,7 @@ main {
 
 #specials-header {
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: space-around;
     background-color: var(--yellow);
