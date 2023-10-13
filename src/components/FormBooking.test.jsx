@@ -15,10 +15,10 @@ jest.mock('../bookingData', () => ({
 }));
 
 describe('FormBooking Component', () => {
-    test('Test fetchAPI in useEffect', async () => {
-      const navigate = jest.fn();
-      useNavigate.mockImplementation(() => navigate);
+    const navigate = jest.fn();
+    useNavigate.mockImplementation(() => navigate);
 
+    test('Test fetchAPI in useEffect', async () => {
       // data from fetchAPI
       const mockTimeArray = ['10:00', '11:00', '12:00'];
       fetchAPI.mockResolvedValue(mockTimeArray);

@@ -1,10 +1,25 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom'
 import FormLogin from "./FormLogin";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+
+jest.mock('react-router-dom', () => ({
+    useNavigate: jest.fn(),
+  }));
+
+jest.mock('../contexts/AuthContext', () => ({
+    useAuth: jest.fn(),
+}))
 
 describe("Show error message when invalid input", () => {
-    test("First name", () => {
+    const auth = jest.fn();
+    useAuth.mockImplementation(() => auth);
 
+    const navigate = jest.fn();
+    useNavigate.mockImplementation(() => navigate);
+
+    test("First name", () => {
         render(<FormLogin />);
 
         const invalidInputData = "ab";
