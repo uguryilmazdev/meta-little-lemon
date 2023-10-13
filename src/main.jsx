@@ -4,11 +4,11 @@ import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import App from './App.jsx'
 import About from './pages/About.jsx'
 import Menu from './pages/Menu.jsx'
-import Reservation from './pages/Reservation.jsx'
+import Booking from './pages/Booking.jsx'
 import Order from './pages/Order.jsx'
 import Login from './pages/Login.jsx';
 import ValidLogin from './pages/ValidLogin.jsx';
-import ValidReservation from './pages/ValidReservation.jsx'
+import ValidBooking from './pages/ValidBooking.jsx'
 import { AuthProvider } from './contexts/AuthContext'
 import './styles/index.css'
 
@@ -26,8 +26,8 @@ const router = createBrowserRouter([
     element: <Menu />
   },
   {
-    path: "/reservation",
-    element: <Reservation />
+    path: "/booking",
+    element: <Booking />
   },
   {
     path: "/order",
@@ -42,8 +42,8 @@ const router = createBrowserRouter([
     element: <ValidLogin />,
   },
   {
-    path: "/reservation/valid",
-    element: <ValidReservation />
+    path: "/booking/valid",
+    element: <ValidBooking />
   }
 ]);
 

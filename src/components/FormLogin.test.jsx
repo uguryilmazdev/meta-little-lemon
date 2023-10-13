@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom'
 import FormLogin from "./FormLogin";
-import { useAuth } from "../contexts/AuthContext";
 
 describe("Show error message when invalid input", () => {
     test("First name", () => {
+
         render(<FormLogin />);
 
         const invalidInputData = "ab";

@@ -58,13 +58,13 @@ export default function FormLogin() {
             isTouched: false,
         });
     }
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const { login } = useAuth();
         login();
         clearForm();
-        const navigate = useNavigate();
         navigate("/login/valid");
     }
 

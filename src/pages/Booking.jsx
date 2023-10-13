@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Nav from "../components/Nav"
-import FormReservation from "../components/FormReservation"
+import FormBooking from "../components/FormBooking"
 import Footer from "../components/Footer"
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ export default function Reservation() {
     return (
         <>
             <Nav />
-            <FormReservation />
+            <FormBooking />
             <Footer />
         </>
     )

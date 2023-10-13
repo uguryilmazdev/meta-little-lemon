@@ -1,24 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DateErrorMessage, GuestErrorMessage, PlaceholderArea } from "../utils";
+import { DateErrorMessage, TimeErrorMessage, GuestErrorMessage, PlaceholderArea, formatDateToYYYYMMDD } from "../utils";
+import { fetchAPI, submitAPI } from "../bookingData";
 
-export default function FormReservation() {
+export default function FormBooking() {
     const [date, setDate] = useState({
-        value: "",
+        value: formatDateToYYYYMMDD(),
         isTouched: false,
     });
     const [time, setTime] = useState({
         value: "",
         isTouched: false,
     });
+    const [timeArray, setTimeArray] = useState([]);
     const [guests, setGuests] = useState({
-        value: "",
+        value: "5",
         isTouched: false,
     });
     const [occasion, setOccasion] = useState({
         value: "",
         isTouched: false,
     });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const resultArray = await fetchAPI(date.value);
+                setTimeArray(resultArray);
+            } catch (error) {
+                setTimeArray([]);
+            }
+        }
+        fetchData();
+    }, [date]);
 
     const navigate = useNavigate();
 
@@ -37,6 +51,7 @@ export default function FormReservation() {
             value: "",
             isTouched: false,
         });
+        setTimeArray([]);
         setGuests({
             value: "",
             isTouched: false,
@@ -47,10 +62,24 @@ export default function FormReservation() {
         });
     }
 
-    const handleSubmit = (e) => {
+    const submitData = async () => {
+        const formData = {
+            date: date.value,
+            time: time.value,
+        }
+
+        try {
+            await submitAPI(formData);
+        } catch (error) {
+            console.error("Error", error);
+        }
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        submitData();
         clearForm();
-        navigate("/reservation/valid");
+        navigate("/");
     }
 
     return (
@@ -75,13 +104,12 @@ export default function FormReservation() {
                     value={time.value}
                     onChange={(e) => setTime({...time, value: e.target.value})}
                     >
-                        <option value="17.00">17.00</option>
-                        <option value="18.00">18.00</option>
-                        <option value="19.00">19.00</option>
-                        <option value="20.00">20.00</option>
-                        <option value="21.00">21.00</option>
+                        <option value="" disabled hidden>Choose time</option>
+                        {timeArray.map((time) => {
+                            return <option value={time} key={time}>{time}</option>
+                        })}
                     </select>
-                    <PlaceholderArea />
+                    {timeArray.length === 0 ? (<TimeErrorMessage isError/>) : (<PlaceholderArea />)}
                 </div>
                 <div className="form-field">
                     <label>Number of Guest: {guests.value}</label>

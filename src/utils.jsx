@@ -51,6 +51,14 @@ export const DateErrorMessage = ({ isError }) => {
     );
 }
 
+export const TimeErrorMessage = ({ isError }) => {
+    return (
+        <p className={`field-error ${isError ? 'visible' : ''}`}>
+            All hours are full on that day. Please try another day.
+        </p>
+    )
+}
+
 export const GuestErrorMessage = () => {
     return (
         <p className="field-error visible">Please call us to make a reservation for more than 10 people.</p>
@@ -83,3 +91,12 @@ export const PlaceholderArea = () => {
         <p className="field-error">This is invisible placeholder area.</p>
     )
 }
+
+// Current day's date
+export const formatDateToYYYYMMDD = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
