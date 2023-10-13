@@ -87,34 +87,37 @@ export default function FormBooking() {
             <fieldset>
                 <h2>Make Reservation</h2>
                 <div className="form-field">
-                    <label>Choose date:</label>
+                    <label htmlFor="date">Choose date:</label>
                     <input
                     type="date"
                     value={date.value}
+                    aria-label="date"
                     onChange={(e) => setDate({...date, value: e.target.value})}
                     onBlur={() => setDate({...date, isTouched: true})}
                     />
                     {date.isTouched && !date.value ? (<DateErrorMessage isError/>) : (<DateErrorMessage />)}
                 </div>
                 <div className="form-field">
-                    <label>Choose time:</label>
+                    <label htmlFor="time">Choose time:</label>
                     <select
-                    name="reservation-time"
-                    id="reservation-time"
+                    name="time"
+                    id="time"
+                    aria-label="time"
                     value={time.value}
                     onChange={(e) => setTime({...time, value: e.target.value})}
                     >
-                        <option value="" disabled hidden>Choose time</option>
+                        <option data-testid="time" value="" disabled hidden>Choose time</option>
                         {timeArray.map((time) => {
-                            return <option value={time} key={time}>{time}</option>
+                            return <option data-testid="time" value={time} key={time}>{time}</option>
                         })}
                     </select>
                     {timeArray.length === 0 ? (<TimeErrorMessage isError/>) : (<PlaceholderArea />)}
                 </div>
                 <div className="form-field">
-                    <label>Number of Guest: {guests.value}</label>
+                    <label htmlFor="guests">Number of Guest: {guests.value}</label>
                     <input
                     type="range"
+                    aria-label="guests"
                     value={guests.value}
                     min={2}
                     max={10}
@@ -123,14 +126,15 @@ export default function FormBooking() {
                     <GuestErrorMessage />
                 </div>
                 <div className="form-field">
-                    <label>Occasion:</label>
+                    <label htmlFor="occasion">Occasion:</label>
                     <select
                     name="occasion"
                     id="occasion"
+                    aria-label="occasion"
                     value={occasion.value}
                     onChange={(e) => setOccasion({...occasion, value: e.target.value})}
                     >
-                        <option value="birthday">Birthday</option>
+                        <option data-testid="occasion" value="birthday">Birthday</option>
                         <option value="anniversary">Anniversary</option>
                         <option value="meeting">Meeting</option>
                     </select>
