@@ -1,0 +1,16 @@
+#page-menu-container {
+    display: flex;
+    display: column;
+    padding: var(--padding-inner);
+}
+
+.menu-item-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: justify;
+    margin: var(--margin-outer) 0;
+    width: 90%;
+    gap: 2rem;
+}

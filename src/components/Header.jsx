@@ -10,7 +10,7 @@ export default function Header() {
                 <h3 className='text-headline'>London</h3>
                 <p className='text-regular'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua.</p>
-                <Link to="/reservation" className="link-in-button-yellow">Reserve a Table</Link>
+                <Link to="/booking" className="link-in-button-yellow">Reserve a Table</Link>
             </div>
             <img src={restaurantPhoto} id='header-image'/>
         </header>
