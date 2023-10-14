@@ -14,7 +14,7 @@ jest.mock('../bookingData', () => ({
     submitAPI: jest.fn(),
 }));
 
-describe('FormBooking Component', () => {
+describe('Fetch data', () => {
     const navigate = jest.fn();
     useNavigate.mockImplementation(() => navigate);
 
@@ -32,7 +32,43 @@ describe('FormBooking Component', () => {
       expect(fetchAPI).toHaveBeenCalledWith(expect.any(String));
 
       // check fetchAPI's result
-      expect(screen.getByLabelText('time')).toBeInTheDocument();
+      const timeArray = screen.getAllByTestId('time')
+      expect(timeArray[0]).toBeInTheDocument();
+      expect(timeArray[1]).toBeInTheDocument();
+      expect(timeArray[2]).toBeInTheDocument();
     });
   });
+
+describe("Show error message when invalid input", () => {
+    const navigate = jest.fn();
+    useNavigate.mockImplementation(() => navigate);
+
+    test("Date", () => {
+        render(<FormBooking />);
+
+        const invalidInputData = "";
+
+        const input = screen.getByLabelText("date");
+        fireEvent.change(input, { target: { value: invalidInputData } });
+        fireEvent.blur(input);
+        const errorMessage = screen.getByText("Please select a date");
+        expect(errorMessage).toHaveProperty("previousSibling", input)
+    });
+
+    test("Time", () => {
+        render(<FormBooking />);
+
+        const invalidInputData = "";
+        const validDateDate = '2023-10-04';
+
+        const dateInput = screen.getByLabelText("date");
+        const timeInput = screen.getByLabelText("time");
+        fireEvent.change(dateInput, { target: { value: validDateDate } });
+        fireEvent.change(timeInput, { target: { value: invalidInputData } });
+        fireEvent.blur(dateInput);
+        fireEvent.blur(timeInput);
+        const errorMessage = screen.getByText("All hours are full on that day. Please try another day.")
+        expect(errorMessage).toHaveProperty("previousSibling", timeInput);
+    })
+})
 

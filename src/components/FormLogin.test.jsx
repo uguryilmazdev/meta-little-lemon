@@ -28,7 +28,7 @@ describe("Show error message when invalid input", () => {
         fireEvent.change(input, { target: { value: invalidInputData } });
         fireEvent.blur(input);
         const errorMessage = screen.getByText("First name should have at least 3 characters")
-        expect(errorMessage).toHaveProperty("previousSibling",input)
+        expect(errorMessage).toHaveProperty("previousSibling", input)
     });
 
     test("Last name", () => {
@@ -104,4 +104,35 @@ test("Clear input areas after submitting", () => {
         expect(input).toHaveValue("");
       });
 });
+
+test("Submit button is enabled when all required inputs are filled", () => {
+    const auth = jest.fn();
+    useAuth.mockImplementation(() => auth);
+
+    render(<FormLogin />);
+
+    // Get all input fields
+    const firstNameInput = screen.getByLabelText("firstName");
+    const lastNameInput = screen.getByLabelText("lastName");
+    const emailInput = screen.getByLabelText("email");
+    const phoneInput = screen.getByLabelText("phoneNumber");
+    const passwordInput = screen.getByLabelText("password");
+
+    // Fill in the input fields
+    fireEvent.change(firstNameInput, { target: { value: "John" } });
+    fireEvent.change(lastNameInput, { target: { value: "Doe" } });
+    fireEvent.change(emailInput, { target: { value: "test@example.com" } });
+    fireEvent.change(phoneInput, { target: { value: "1234567890" } });
+    fireEvent.change(passwordInput, { target: { value: "password123" } });
+
+    // Get the submit button
+    const submitButton = screen.getByText("Create Account");
+    // Check if the submit button is enabled
+    expect(submitButton).toBeEnabled();
+
+    // set an invalid input
+    fireEvent.change(firstNameInput, { target: { value: "" } });
+    // Check if the submit button is unabled
+    expect(submitButton).toBeDisabled();
+})
 

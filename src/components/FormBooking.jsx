@@ -5,7 +5,7 @@ import { fetchAPI, submitAPI } from "../bookingData";
 
 export default function FormBooking() {
     const [date, setDate] = useState({
-        value: formatDateToYYYYMMDD(),
+        value: "",
         isTouched: false,
     });
     const [time, setTime] = useState({
@@ -34,13 +34,18 @@ export default function FormBooking() {
         fetchData();
     }, [date]);
 
-    const navigate = useNavigate();
-
     const getIsFormValid = () => {
         return (
-            date.value !== ""
+            date.value !== '' &&
+            time.value !== ''
         )
     }
+
+    useEffect(() => {
+        getIsFormValid();
+    }, [date.value])
+
+    const navigate = useNavigate();
 
     const clearForm = () => {
         setDate({
@@ -111,7 +116,7 @@ export default function FormBooking() {
                             return <option data-testid="time" value={time} key={time}>{time}</option>
                         })}
                     </select>
-                    {timeArray.length === 0 ? (<TimeErrorMessage isError/>) : (<PlaceholderArea />)}
+                    {timeArray.length === 0 && date.value !== '' ? (<TimeErrorMessage isError/>) : (<PlaceholderArea />)}
                 </div>
                 <div className="form-field">
                     <label htmlFor="guests">Number of Guest: {guests.value}</label>
