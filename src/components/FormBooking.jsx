@@ -145,7 +145,7 @@ export default function FormBooking() {
                     </select>
                     <PlaceholderArea />
                 </div>
-                <button type="submit" className="form-submit" disabled={!getIsFormValid()}>
+                <button type="submit" className="form-submit" aria-label="On Click" disabled={!getIsFormValid()}>
                     Make Reservation
                 </button>
             </fieldset>

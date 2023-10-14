@@ -134,7 +134,7 @@ export default function FormLogin() {
                     />
                     {password.isTouched && password.value.length < 8 ? (<PasswordErrorMessage isError/>) : (<PasswordErrorMessage />)}
                 </div>
-                <button type="submit" className="form-submit" disabled={!getIsFormValid()}>
+                <button type="submit" className="form-submit" aria-label="On Click" disabled={!getIsFormValid()}>
                     Create Account
                 </button>
             </fieldset>
