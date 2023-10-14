@@ -4,8 +4,4 @@ The Little Lemon project is the final project of the Meta Frontend Developer cou
 
 It's built by using React and CSS.
 
-## Try Demo
-
-<a href="https://uguryilmazdev.github.io/meta-little-lemon/">Live demo</a>
-
 
