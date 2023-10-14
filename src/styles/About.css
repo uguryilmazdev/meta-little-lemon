@@ -1,0 +1,31 @@
+.about-image {
+    width: 70%;
+}
+
+#page-about-container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#page-about-container > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#page-about-container > h1 {
+    color: var(--green);
+}
+
+/* lg screen */
+@media (width >= 992px) {
+    #page-about-container > div {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .about-image {
+        width: 40%;
+    }
+}
