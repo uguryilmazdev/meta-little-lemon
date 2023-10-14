@@ -17,7 +17,6 @@ function Nav() {
                 <Link to="/about" className='link'>About</Link>
                 <Link to="/menu" className='link'>Menu</Link>
                 <Link to="/booking" className='link'>Reservation</Link>
-                <Link to="/order" className='link'>Order Online</Link>
                 {isLoggedIn ?
                 <button className='button-green' onClick={() => {logout(), navigate("/")}}>Logout</button>
                 :
